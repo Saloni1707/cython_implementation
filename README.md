@@ -1,2 +1,12 @@
-#Cython -> Really cool stuff this lies between python and C and blends the speed and type information of C to make python code more fast.
-Here's my attempt to understand it more carefully as to how it works by creating a basic backend application to send messages and retrieve them from db.Will eventually add more features here!
+Cython Backend Messaging App
+Cython is a powerful tool that sits between Python and C, blending the simplicity of Python with the speed and static typing of C. This project is my hands-on attempt to understand Cython better by building a basic backend application for sending and retrieving messages from a database.
+
+The app uses:
+
+FastAPI for the backend web framework
+
+MongoDB for storing messages
+
+Cython for performance-critical utility functions (like text sanitization)
+
+This is a starter project with core messaging features!
