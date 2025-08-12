@@ -1,6 +1,5 @@
 from pydantic import BaseModel,Field
 from datetime import datetime
-from typing import Optional
 
 class MessageSend(BaseModel):
     content:str=Field(...,max_length=2000)
