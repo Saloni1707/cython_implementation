@@ -11,7 +11,7 @@ MONGO_URL=os.getenv("MONGO_URL")
 router=APIRouter()
 mongo_utils=MongoUtils(MONGO_URL,"messenger_db")
 
-@router.post("/messages",response_model=MessageReceive)
+@router.post("/send",response_model=MessageReceive)
 async def send_message(payload:MessageSend):
     cleaned=cy_helpers.sanitize_text(payload.content)
     doc={
@@ -22,7 +22,7 @@ async def send_message(payload:MessageSend):
     return MessageReceive(id=inserted_id,content=cleaned,timestamp=doc["timestamp"])
 
 
-@router.get("/messages",response_model=list[MessageReceive])
+@router.get("/receive",response_model=list[MessageReceive])
 async def get_messages():
     docs=await mongo_utils.get_messages("messages")
     results=[{

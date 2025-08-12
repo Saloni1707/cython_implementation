@@ -18,7 +18,7 @@ cdef class MongoUtils:
     async def get_messages(self, str collection_name):
         try:
             cdef list docs=[]
-            cdef object cursor = self.db[collection_name].find()
+            cdef object cursor = await self.db[collection_name].find()
             async for doc in cursor:
                 if '_id' in doc:
                     doc['_id'] = str(doc['_id'])
@@ -26,3 +26,4 @@ cdef class MongoUtils:
             return docs
         except Exception as e:
             raise RuntimeError(f"Failed to get message: {str(e)}")
+            
